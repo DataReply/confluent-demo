@@ -12,6 +12,7 @@ public class MNM {
 	int pill_x;
 	int pill_y;
 	int color;
+	int damaged;
 	
 	public long getPill_id() {
 		return pill_id;
@@ -30,6 +31,13 @@ public class MNM {
 	}
 	public int getColor() {
 		return color;
+	}
+	public int getDamaged() {
+		return damaged;
+	}
+	
+	public void setDamaged(int damaged) {
+		this.damaged = damaged;
 	}
 	public void setPill_id(long pill_id) {
 		this.pill_id = pill_id;
@@ -56,7 +64,8 @@ public class MNM {
 			@JsonProperty("score") double score,
 			@JsonProperty("pill_x") int pill_x,
 			@JsonProperty("pill_y") int pill_y,
-			@JsonProperty("color") int color) {
+			@JsonProperty("color") int color,
+			@JsonProperty("damaged") int damaged) {
 		super();
 		this.pill_id = pill_id;
 		this.camera_id = camera_id;
@@ -64,12 +73,13 @@ public class MNM {
 		this.pill_x = pill_x;
 		this.pill_y = pill_y;
 		this.color = color;
+		this.damaged = damaged;
 	}
 	
 	@Override
 	public String toString() {
 		return "Message [pill_id=" + pill_id + ", camera_id=" + camera_id + ", score=" + score + ", pill_x=" + pill_x
-				+ ", pill_y=" + pill_y + ", color=" + color + "]";
+				+ ", pill_y=" + pill_y + ", color=" + color + ", damaged=" + damaged + "]";
 	}
 	
 	

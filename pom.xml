@@ -100,7 +100,7 @@
 	                    <configuration>
 	                        <fromFile>${project.basedir}/target/demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar</fromFile>
 	                        <serverId>confluent-demo</serverId>
-	                        <url>scp://ec2-user@ec2.compute.amazonaws.com/home/ec2-user/</url>
+	                        <url>scp://ec2-user@ec2/home/ec2-user/</url>
 	                        <toFile>demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar</toFile>
 	                    </configuration>
 	                </execution>
