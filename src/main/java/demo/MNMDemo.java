@@ -120,7 +120,7 @@ public class MNMDemo {
         
         //ration of damaged MNMs per color
         KTable<String, String> joined = tableColorCount.join(tableColorDam,
-        		(leftValue, rightValue) -> df2.format((double)rightValue/leftValue));
+        		(leftValue, rightValue) ->  df2.format((double)rightValue/leftValue));
 //        KStream<String, String> joined = colorsCount.join(colorDem,
 //        		(leftValue, rightValue) -> df2.format((double)rightValue/leftValue) ,
 //        	    JoinWindows.of(TimeUnit.MINUTES.toMillis(5)),
@@ -149,8 +149,8 @@ public class MNMDemo {
 //        joinedTotal.to("joined-count-total-output", Produced.with(Serdes.String(), Serdes.String()));
 //        joined.to("joined-count-output", Produced.with(Serdes.String(), Serdes.String()));
 //        tableColorCount.toStream().to("table-colors-count-output", Produced.with(Serdes.String(), Serdes.Long()));
-        joined.toStream().to("streams-damaged-count-output", Produced.with(Serdes.String(), Serdes.String()));
-        joinedTotal.toStream().to("streams-color-damaged-count-output", Produced.with(Serdes.String(), Serdes.String()));
+        joined.toStream().to("streams-damaged-count", Produced.with(Serdes.String(), Serdes.String()));
+        joinedTotal.toStream().to("streams-color-damaged-count", Produced.with(Serdes.String(), Serdes.String()));
         
         final Topology topology = builder.build();
         
