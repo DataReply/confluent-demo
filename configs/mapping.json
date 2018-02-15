@@ -1,0 +1,21 @@
+{  
+      "mappings":{  
+         "kafka-connect":{  
+            "properties":{
+               "key":{  
+                  "type":"long"
+               },  
+               "offset":{  
+                  "type":"long"
+               },
+               "timestamp":{  
+                  "type":"date",
+                  "format":"strict_date_optional_time||epoch_millis"
+               },
+               "value":{  
+                  "type":"float"
+               }
+            }
+         }
+      }
+}

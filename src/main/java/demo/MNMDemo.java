@@ -131,6 +131,15 @@ public class MNMDemo {
 //        	  );
         
         
+        KStream<String, String> joinedTotalStream = joinedTotal
+        		.toStream()
+        		.map((key, value) -> KeyValue.pair(key, "{ \"value\":" + value +"}"));
+        
+        KStream<String, String> joinedStream = joined
+        		.toStream()
+        		.map((key, value) -> KeyValue.pair(key, "{ \"key\":" + key + " ,\"value\":" + value +"}"));
+        
+        
         KStream<String, MNM> damaged = transformed.map(
         	    (key, value) -> KeyValue.pair(String.valueOf(value.getDamaged()), value)
         		);
@@ -149,8 +158,8 @@ public class MNMDemo {
 //        joinedTotal.to("joined-count-total-output", Produced.with(Serdes.String(), Serdes.String()));
 //        joined.to("joined-count-output", Produced.with(Serdes.String(), Serdes.String()));
 //        tableColorCount.toStream().to("table-colors-count-output", Produced.with(Serdes.String(), Serdes.Long()));
-        joined.toStream().to("streams-damaged-count", Produced.with(Serdes.String(), Serdes.String()));
-        joinedTotal.toStream().to("streams-color-damaged-count", Produced.with(Serdes.String(), Serdes.String()));
+        joinedStream.to("streams-color-damaged-count", Produced.with(Serdes.String(), Serdes.String()));
+        joinedTotalStream.to("streams-damaged-count", Produced.with(Serdes.String(), Serdes.String()));
         
         final Topology topology = builder.build();
         
